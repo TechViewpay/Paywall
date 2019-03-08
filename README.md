@@ -16,12 +16,24 @@ Le fichier ViewPayWall.js est le seul fichier qui doit être chargé dans la pag
 
 NB: Il faut placer le script le plus haut possible dans la page afin d’optimiser son temps de chargement.
 
-## Etape 2
-```html
-code
-```
-text
+## Nom de div pour les différentes actions
 
+```
+<p class="ViewPay_Opacity"></p>
+```
+Permet de cacher le texte au fur et à mesure de l'arrivée du Paywall.
+C'est la div contenant l'introduction de l'article
+
+```
+<div id="ViewPay_ReadPC"></div>
+```
+Permet d'afficher le pourcentage de lecture restante sur la totalité de l'article
+"Il vous reste 95% de l'article à lire"
+
+```
+<div id="ViewPay_Article">Lorem ipsum </div>
+```
+Voici la div contenant la partie de l'article bloqué
 
 
 ## Etape 2
