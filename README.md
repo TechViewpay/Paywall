@@ -8,11 +8,21 @@ Voici un exemple de déblocage d'article avec Viewpay :
 
 ![sample](https://github.com/TechViewpay/ViewPay-iOS/blob/master/DocImages/parcours_vp_mobile3.png?raw=true)
 
-## Etape 1
+## Chargement du Javascript
+```html
+<script type="text/javascript" src="https://www.pmur.org/Prod/ViewPayWall.js"></script>
+```
+Le fichier ViewPayWall.js est le seul fichier qui doit être chargé dans la page qui va accueillir le paywall (page affichant le paywall). Ce fichier est servi par notre CDN, pour vous garantir d'avoir toujours la dernière version.
+
+NB: Il faut placer le script le plus haut possible dans la page afin d’optimiser son temps de chargement.
+
+## Etape 2
 ```html
 code
 ```
 text
+
+
 
 ## Etape 2
 ```html
