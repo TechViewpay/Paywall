@@ -12,28 +12,32 @@ Voici un exemple de déblocage d'article avec Viewpay :
 ```html
 <script type="text/javascript" src="https://www.pmur.org/Prod/ViewPayWall.js"></script>
 ```
-Le fichier ViewPayWall.js est le seul fichier qui doit être chargé dans la page qui va accueillir le paywall (page affichant le paywall). Ce fichier est servi par notre CDN, pour vous garantir d'avoir toujours la dernière version.
+Le fichier ViewPayWall.js est le seul fichier nécessaire à appeler, celui-ci fera ensuite le travail nécessaire à appeler les éléments nécessaires pour un moment donné.
+Ces fichiers sont installés sur notre CDN afin de vous garantir d'avoir toujours la dernière version.
 
 NB: Il faut placer le script le plus haut possible dans la page afin d’optimiser son temps de chargement.
 
 ## Nom de div pour les différentes actions
 
+Chacun des divs possèdent son propre CSS qui peut-être modifié lors de l'intégration du Paywall.
+
 ```
 <p class="ViewPay_Opacity"></p>
 ```
-Permet de cacher le texte au fur et à mesure de l'arrivée du Paywall.
-C'est la div contenant l'introduction de l'article
+Cette classe contient l'introduction de l'article permettant à l'utilisateur de commencer sa lecture afin de lui donner envie puis de lui montrer le paywall.
+Cette div permet de cacher l'introduction au fur et à mesure de l'arrivée du Paywall grâce à du CSS.
 
 ```
 <div id="ViewPay_ReadPC"></div>
 ```
-Permet d'afficher le pourcentage de lecture restante sur la totalité de l'article
+Cet ID permet d'afficher le pourcentage de lecture restant par rapport à la totalité de l'article.
 "Il vous reste 95% de l'article à lire"
 
 ```
 <div id="ViewPay_Article">Lorem ipsum </div>
 ```
-Voici la div contenant la partie de l'article bloqué
+Cet ID permettra de cacher l'article à l'aide de JS chez nous, si le JS est désactivé chez l'utilisateur, nous utilisons alors du CSS.
+
 
 
 ## Etape 2
