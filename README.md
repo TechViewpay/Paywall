@@ -22,44 +22,44 @@ NB: Il faut placer le script le plus haut possible dans la page afin d’optimis
 Les fonctions JS vont permettre au paywall de s'afficher correctement et de faire le parcours nécessaire à celui-ci.
 ```
 <script> 
-		var payWall = null;
-		function initVideo(){
-			payWall = new ViewPayWall({
-					site_id: '//ID', //Remplacer le commentaire par l'ID fourni par l'administrateur ViewPay
-					load_callback:existAds, // Voir Doc ViewPay HTML
-					noads_callback: noAds, // Voir Doc ViewPay HTML
-					complete_callback:completeAds, // Voir Doc ViewPay HTML
-					close_callback:closeAds, // Voir Doc ViewPay HTML
-					play_callback : play, 
-					display_paywall  : true //True : Affiche le paywall, False : Pas de Paywall
-			});
-		}
-		
-		// Voir Doc ViewPay HTML
-		function existAds(){
-      console.log('existAds'); 
-			$("#lien-voir-content").css("display","block");
-		}
-		// Voir Doc ViewPay HTML
-		function noAds(){
-			  console.log('noAds');
-        $("#lien-error").css("display","block");
-		}
+	var payWall = null;
+	function initVideo(){
+		payWall = new ViewPayWall({
+			site_id: '//ID', //Remplacer le commentaire par l'ID fourni par l'administrateur ViewPay
+			load_callback:existAds, // Voir Doc ViewPay HTML
+			noads_callback: noAds, // Voir Doc ViewPay HTML
+			complete_callback:completeAds, // Voir Doc ViewPay HTML
+			close_callback:closeAds, // Voir Doc ViewPay HTML
+			play_callback : play, 
+			display_paywall  : true //True : Affiche le paywall, False : Pas de Paywall
+		});
+	}		
+	// Voir Doc ViewPay HTML
+	function existAds(){
+		console.log('existAds'); 
+		$("#lien-voir-content").css("display","block");
+	}
+	// Voir Doc ViewPay HTML
+	function noAds(){
+		console.log('noAds');
+		$("#lien-error").css("display","block");
+	}
     
-    // Voir Doc ViewPay HTML
-		function completeAds(){
-      console.log('completeAds');
-			payWall.showText(); //Débloquage article
-		}
+	// Voir Doc ViewPay HTML
+    	function completeAds(){
+		console.log('completeAds');
+		payWall.showText(); //Débloquage article
+	}
     
-    // Voir Doc ViewPay HTML
-		function closeAds(){
-			console.log('closeAds');
-		}
-		function play(){
-			console.log('play');
-		}
-	</script>
+	// Voir Doc ViewPay HTML
+	function closeAds(){
+		console.log('closeAds');
+	}
+	
+	function play(){
+		console.log('play');
+	}
+</script>
 ```
 Le callback "display_paywall" permet d'afficher ou non le paywall en fonction de votre propre stratégie. 
 Si c'est un article payant, j'affiche le paywall (true).
@@ -90,6 +90,6 @@ Le Paywall possède des outils dans le BO à configurer dans votre compte, nous 
 Cet ID permettra de cacher l'article à l'aide de JS.
 Si le JS est désactivé chez l'utilisateur, nous utilisons alors du CSS.
 
-Les options suivantes du Paywall sont actuellement :
+Les options suivantes du Paywall en BO sont actuellement :
 - ViewPay : Débloquage de l'article par une attention publicitaire
 - Abonnement : Redirection vers une page définie dans votre compte.
