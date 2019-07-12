@@ -23,7 +23,7 @@ Les fonctions JS vont permettre au paywall de s'afficher correctement et de fair
 ```
 <script> 
 	var payWall = null;
-	function initVideo(){
+	function VPinitVideo(){
 		payWall = new ViewPayWall({
 			site_id: '//ID', //Remplacer le commentaire par l'ID fourni par l'administrateur ViewPay
 			load_callback:existAds, // Voir Doc ViewPay HTML
@@ -35,28 +35,28 @@ Les fonctions JS vont permettre au paywall de s'afficher correctement et de fair
 		});
 	}		
 	// Voir Doc ViewPay HTML
-	function existAds(){
+	function VPexistAds(){
 		console.log('existAds'); 
 		$("#lien-voir-content").css("display","block");
 	}
 	// Voir Doc ViewPay HTML
-	function noAds(){
+	function VPnoAds(){
 		console.log('noAds');
 		$("#lien-error").css("display","block");
 	}
     
 	// Voir Doc ViewPay HTML
-    	function completeAds(){
+    	function VPcompleteAds(){
 		console.log('completeAds');
 		payWall.showText(); //Débloquage article
 	}
     
 	// Voir Doc ViewPay HTML
-	function closeAds(){
+	function VPcloseAds(){
 		console.log('closeAds');
 	}
 	
-	function play(){
+	function VPplay(){
 		console.log('play');
 	}
 </script>
