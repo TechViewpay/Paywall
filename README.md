@@ -74,6 +74,7 @@ Chacun des divs possèdent son propre CSS qui peut-être modifié lors de l'int�
 ```
 Cette classe contient l'introduction de l'article permettant à l'utilisateur de commencer sa lecture afin de lui donner envie de continuer puis de lui montrer le paywall.
 Cette div permet de cacher l'introduction au fur et à mesure de l'arrivée du Paywall grâce à du CSS.
+Il faudra ainsi mettre cette div sur l'introduction visible à l'utilisateur, cela donnera un effet de disparition de l'article jusqu'à l'apparition du Paywall
 
 ```
 <div id="ViewPay_ReadPC"></div>
