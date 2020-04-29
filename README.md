@@ -20,7 +20,7 @@ NB: Il faut placer le script le plus haut possible dans la page afin d’optimis
 ## Fonctions Javascript et lancement du Paywall
 
 Les fonctions JS vont permettre au paywall de s'afficher correctement et de faire le parcours nécessaire à celui-ci.
-```
+```javascript
 <script> 
 	var payWall = null;
 	function VPinitVideo(){
@@ -69,14 +69,14 @@ L'article est gratuit, je n'affiche pas le Paywall (false).
 
 Chacun des divs possèdent son propre CSS qui peut-être modifié lors de l'intégration du Paywall à l'aide de votre propre fichier de CSS, ou directement en inline
 
-```
+```html
 <p class="ViewPay_Opacity"></p>
 ```
 Cette classe contient l'introduction de l'article permettant à l'utilisateur de commencer sa lecture afin de lui donner envie de continuer puis de lui montrer le paywall.
 Cette div permet de cacher l'introduction au fur et à mesure de l'arrivée du Paywall grâce à du CSS.
 Il faudra ainsi mettre cette div sur l'introduction visible à l'utilisateur, cela donnera un effet de disparition de l'article jusqu'à l'apparition du Paywall
 
-```
+```html
 <div id="ViewPay_ReadPC"></div>
 ```
 Cet ID permet d'afficher le pourcentage de lecture restant par rapport à la totalité de l'article.
@@ -85,7 +85,7 @@ C'est à partir de celle-ci que nous allons afficher tout le contenu du Paywall.
 Nous pouvons donc hériter de CSS de div parents.
 Le Paywall possède des outils dans le BO à configurer dans votre compte, nous l'étoffons de jour en jour afin de satisfaire un maximum de besoin.
 
-```
+```html
 <div id="ViewPay_Article">Lorem ipsum </div>
 ```
 Cet ID permettra de cacher l'article à l'aide de JS.
