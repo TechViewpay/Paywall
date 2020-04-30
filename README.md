@@ -17,6 +17,61 @@ Ces fichiers sont installés sur notre CDN afin de vous garantir d'avoir toujour
 
 NB: Il faut placer le script le plus haut possible dans la page afin d’optimiser son temps de chargement.
 
+## Création d’un div pour accueillir la publicité
+Ajoutez un div avec l’id "cadreJokerlyADS" dans votre page. 
+```html
+<div id="cadreJokerlyADS"></div>
+```
+
+Le design CSS est généré automatiquement lors de l’initialisation de Viewpay, ainsi vous n’êtes pas obligés de rajouter du CSS. Cependant, si vous devez changer le design, votre CSS sera pris en priorité. Pour ceci, donnez à ce div les dimensions que vous souhaitez attribuer à Viewpay, en veillant à conserver un ratio largeur/hauteur de 1,44.
+Nous imposons 650x450 pour du desktop et de le centrer horizontalement et verticalement.
+Voici donc le CSS qui chargeons nous-même :
+
+```css
+#cadreJokerlyADS{
+	margin: auto;
+	top: 0;
+	right: 0;
+	left: 0;
+	position: fixed;
+	bottom: 0;
+	width: 650px !important;
+	height: 450px !important;
+	z-index:9999999 !important;
+}
+
+//Le z-index est nécessaire à la visibilité de la publicité. 
+//Il est impératif de le monter si nécessaire si une frame/bannière/autre est au dessus du nôtre.
+//Ceci est obligatoire afin de garantir de CPM élevé.
+
+```
+Si vous souhaitez modifier l'une de ces données, n'hésitez pas à contacter votre contact ViewPay
+
+La même chose se passe pour les sites Mobiles/Tablettes. 
+
+Pour votre site mobile, on utilise tout l’espace vertical disponible en ouvrant l’iframe en 100% width et height, sauf si vous spécifiez la taille maximale que vous souhaitez nous offrir.
+
+Les balises média sont les suivantes suivantes afin de permettre aux personnes sur mobile de profiter pleinement de l’interface ViewPay:
+
+```css
+@media screen and (max-width: 600px){
+	#cadreJokerlyADS{
+	width:100% !important;
+	height:100% !important;
+	margin-top:0;
+	}
+}
+@media screen and ((min-width: 601px) and (max-width: 1024px)){
+	#cadreJokerlyADS{
+	width:100% !important;
+	height:100% !important;
+	margin-top:0;
+	margin-left:0;
+	}
+}
+
+```
+
 ## Fonctions Javascript et lancement du Paywall
 
 Les fonctions et callbacks fournis par Viewpay sont les suivants : 
