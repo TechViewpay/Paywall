@@ -260,53 +260,6 @@ Pour finir, la div #cadreJokerlyAds doit être positionnée à l’intérieur de
 
 Nous avons remarqué que les modales de Bootstrap sont par défaut affichées avec un délai de 0.15 secondes. Pour corriger ce problème dans un site Bootstrap, il suffit de lancer VPLoadAds dans un setTimeout d’au minimum 0.15s.
 
-### Optimisation du chargement du bouton ViewPay
-Il est primordial d’optimiser la vitesse d’affichage du bouton Viewpay, pour maximiser le taux de clic sur le bouton et donc les revenus générés. Il faut donc s’assurer d’appeler VpInit() le plus au début de la page possible, pour que la disponibilité de la pub soit déjà connue au moment d’afficher votre paywall.
-
-Malgré cela, comme le chargement des pages fait souvent appel à une multitudes de process (pubs, contenus, analytics…), il peut arriver que la réponse arrive après l’affichage du paywall : le risque est alors que l’utilisateur quitte la page avant même que le bouton soit affiché…
-
-Pour éviter ce phénomène, il faut afficher par défaut un bouton temporaire ViewPay non cliquable, qui affiche la proposition Viewpay et qui informe que le process de recherche de pub est en cours. Ce bouton est remplacé par le bouton cliquable dès que la réponse est obtenue.
-
-La logique est la suivante :
-- Affichage du bonton VieWPay grisé et non cliquable, avec un wording du type "Chargement des publicités...".
-- On vérifie s'il y a des publicités disponibles, 
-	- Si Oui (VPexistAds())
-		- Le bouton change de wording et devient cliquable
-	- Si Non (VPnoaAds())
-		- Le bouton disparaît
-
-Techniquement parlant il y a donc deux boutons différents : 
-	- Un bouton temporaire (#btnVpChargement) et non cliquable disponible dès le début 
-	- Un bouton définitif (#btnShowViewPay) et caché avec la fonction VPloadAds remplaçant le précédent dès qu'une pub est disponible.
-	
-De cette façon, on évite tout lag entre l’affichage du paywall et celui du bouton ViewPay, ce qui permettra aux lecteurs de découvrir plus rapidement l’existence du bouton ViewPay dans le paywall.
-
-Voici comment faire :
-```html
-<button id="btnVpChargement" style="display:block; background-color:grey; ">Nous recherchons des publicités pour vous</button>
-<button id="btnShowViewpay" style="display:none; background-color:green;" onclick="VPloadAds()">Accédez à cet article en regardant une publicité</button>
-```
-Le CSS, le wording et les div concernées sont à réadapter en fonction des différentes chartes graphiques et de l'intégration.
-
-Nous avons ainsi nos deux boutons. Il faut désormais les faire interagir en fonction des publicités.
-
-```javascript
-function VPexistAds(){
-	alert("existAds");
-	$("#btnchargement").css("display","none");
-	$("#btnShowViewpay").css("display","block");
-}
-```	
-
-```javascript
-function VPnoAds(){
-	$("#buttonchargement").css("display","none");
-	alert("noAds");
-}
-```
-
-N.B. : Il peut être nécessaire de cacher également ce qui entoure le bouton, par exemple : un wording situé au dessus, une séparation entre les deux boutons etc...
-
 ## Informations de ciblage
 Il est possible (et très souhaitable) de transmettre à ViewPay des informations qui nous permettront de mieux cibler les publicités pour chaque utilisateur. Si vous disposez d’informations non nominatives sur l’utilisateur, telles que son sexe et son âge, où encore la catégorie de l’article à débloquer (Economie, International, sport…), ces informations peuvent être renseignées dans la fonction Init().
 
