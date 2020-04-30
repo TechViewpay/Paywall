@@ -156,6 +156,55 @@ http://your.callback.url/callback_page.html?...&editor_id={your_editorID}&dynami
 ```
 IMPORTANT : Afin que la transaction ait bien lieu, notre serveur attend de recevoir une réponse HTTP valide avec le statut 200 (OK).
 
+## Fond noir
+Il faut ajouter un fond sombre autour du système Viewpay,  qui permet d’optimiser l’expérience utilisateur. Voici un exemple du rendu:  
+![sample](https://cdn.jokerly.com/images/logosVP/exemple_fondnoir.png)
+
+Pour ce faire, il faut faire apparaître le fond au même moment que l'AdSelector ViewPay en l’ajoutant ainsi dans la fonction VPloadAds : 
+
+```javascript
+function VPloadAds(){
+	document.getElementById("modal").style.display = 'block';
+	JKFBASQ.loadAds();
+}
+```
+Avec le mot "VPmodal" représentant l'Id de la div possédant le code CSS suivant, nous conseillons de fixer l’opacité de background-color à 0.9 afin d’assurer aux annonceurs une visibilité optimale de leurs vidéos : 
+```css
+#VPmodal{
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+}
+```
+
+Cette div doit aussi disparaître lorsque la personne arrive au VPcompleteAds, ce qui s’obtient ainsi :
+ 
+```javascript 
+function VPcompleteAds(){
+	document.getElementById("cadre").style.display = 'none';
+}
+```
+
+De plus il faut le faire disparaître si la personne décide de quitter l’adSelector :
+```javascript
+function VPcloseAds(){
+	document.getElementById("modal").style.display = 'none';
+}	
+```
+
+Pour finir, la div #cadreJokerlyAds doit être positionnée à l’intérieur de la div #modal:
+
+```html
+<div id="modal">
+	<div id="cadreJokerlyADS"></div>
+</div>
+```
+
+Nous avons remarqué que les modales de Bootstrap sont par défaut affichées avec un délai de 0.15 secondes. Pour corriger ce problème dans un site Bootstrap, il suffit de lancer VPLoadAds dans un setTimeout d’au minimum 0.15s.
+
 ### Optimisation du chargement du bouton ViewPay
 Il est primordial d’optimiser la vitesse d’affichage du bouton Viewpay, pour maximiser le taux de clic sur le bouton et donc les revenus générés. Il faut donc s’assurer d’appeler VpInit() le plus au début de la page possible, pour que la disponibilité de la pub soit déjà connue au moment d’afficher votre paywall.
 
@@ -202,56 +251,6 @@ function VPnoAds(){
 ```
 
 N.B. : Il peut être nécessaire de cacher également ce qui entoure le bouton, par exemple : un wording situé au dessus, une séparation entre les deux boutons etc...
-
-## Fond noir
-Il faut ajouter un fond sombre autour du système Viewpay,  qui permet d’optimiser l’expérience utilisateur. Voici un exemple du rendu:  
-![sample](https://cdn.jokerly.com/images/logosVP/exemple_fondnoir.png)
-
-
-Pour ce faire, il faut faire apparaître le fond au même moment que l'AdSelector ViewPay en l’ajoutant ainsi dans la fonction VPloadAds : 
-
-```javascript
-function VPloadAds(){
-	document.getElementById("modal").style.display = 'block';
-	JKFBASQ.loadAds();
-}
-```
-Avec le mot "VPmodal" représentant l'Id de la div possédant le code CSS suivant, nous conseillons de fixer l’opacité de background-color à 0.9 afin d’assurer aux annonceurs une visibilité optimale de leurs vidéos : 
-```css
-#VPmodal{
-    width: 100%;
-    height: 100%;
-    display: none;
-    position: fixed;
-    background-color: rgba(0, 0, 0, 0.9);
-    z-index: 1000;
-}
-```
-
-Cette div doit aussi disparaître lorsque la personne arrive au VPcompleteAds, ce qui s’obtient ainsi :
- 
-```javascript 
-function VPcompleteAds(){
-	document.getElementById("cadre").style.display = 'none';
-}
-```
-
-De plus il faut le faire disparaître si la personne décide de quitter l’adSelector :
-```javascript
-function VPcloseAds(){
-	document.getElementById("modal").style.display = 'none';
-}	
-```
-
-Pour finir, la div #cadreJokerlyAds doit être positionnée à l’intérieur de la div #modal:
-
-```html
-<div id="modal">
-	<div id="cadreJokerlyADS"></div>
-</div>
-```
-
-Nous avons remarqué que les modales de Bootstrap sont par défaut affichées avec un délai de 0.15 secondes. Pour corriger ce problème dans un site Bootstrap, il suffit de lancer VPLoadAds dans un setTimeout d’au minimum 0.15s.
 
 ## Informations de ciblage
 Il est possible (et très souhaitable) de transmettre à ViewPay des informations qui nous permettront de mieux cibler les publicités pour chaque utilisateur. Si vous disposez d’informations non nominatives sur l’utilisateur, telles que son sexe et son âge, où encore la catégorie de l’article à débloquer (Economie, International, sport…), ces informations peuvent être renseignées dans la fonction Init().
