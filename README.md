@@ -95,13 +95,13 @@ Les fonctions JS vont permettre au paywall de s'afficher correctement et de fair
 	var payWall = null;
 	function VPinitVideo(){
 		payWall = new ViewPayWall({
-			site_id: '//ID', //Remplacer le commentaire par l'ID fourni par l'administrateur ViewPay
-			load_callback: VPexistAds, // Voir Doc ViewPay HTML
-			noads_callback: VPnoAds, // Voir Doc ViewPay HTML
-			complete_callback: VPcompleteAds, // Voir Doc ViewPay HTML
-			close_callback: VPcloseAds, // Voir Doc ViewPay HTML
+			site_id : '//ID', //Remplacer le commentaire par l'ID fourni par l'administrateur ViewPay
+			load_callback : VPexistAds, // Voir Doc ViewPay HTML
+			noads_callback : VPnoAds, // Voir Doc ViewPay HTML
+			complete_callback : VPcompleteAds, // Voir Doc ViewPay HTML
+			close_callback : VPcloseAds, // Voir Doc ViewPay HTML
 			play_callback : VPplay, 
-			display_paywall  : true //True : Affiche le paywall, False : Pas de Paywall
+			display_paywall : true //True : Affiche le paywall, False : Pas de Paywall
 		});
 	}		
 	// Voir Doc ViewPay HTML
