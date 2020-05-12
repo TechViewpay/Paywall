@@ -266,7 +266,7 @@ Il est possible (et très souhaitable) de transmettre à ViewPay des information
 Discutons ensemble du champ des possibles au moment de démarrer l’intégration!
 
 ```javascript
-function VPinit(){
+function VPinitVideo(){
 	JKFBASQ.init({
 		site_id: 'b23d3f0235ae89e4', // id de démo	
 		load_callback : VPexistAds,
