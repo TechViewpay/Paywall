@@ -95,7 +95,7 @@ Les fonctions JS vont permettre au paywall de s'afficher correctement et de fair
 	var payWall = null;
 	function VPinitVideo(){
 		payWall = new ViewPayWall({
-			site_id : '97be55e4fd74c98a', //Remplacer le commentaire par l'ID fourni par l'administrateur ViewPay
+			site_id : '97be55e4fd74c98a', //Remplacer cet ID par l'ID fourni par l'administrateur ViewPay
 			load_callback : VPexistAds, // Voir Doc ViewPay HTML
 			noads_callback : VPnoAds, // Voir Doc ViewPay HTML
 			complete_callback : VPcompleteAds, // Voir Doc ViewPay HTML
