@@ -10,7 +10,7 @@ Voici un exemple de déblocage d'article avec Viewpay :
 
 ## Chargement du Javascript
 ```html
-<script type="text/javascript" src="http://pmur.org/Prod/ViewPayWall.js"></script>
+<script type="text/javascript" src="https://pmur.org/Prod/ViewPayWall.js"></script>
 ```
 Le fichier ViewPayWall.js est le seul fichier nécessaire à appeler, celui-ci fera ensuite le travail afin d'appeler les éléments nécessaires pour un moment donné.
 Ces fichiers sont installés sur notre CDN afin de vous garantir d'avoir toujours la dernière version.
