@@ -147,7 +147,7 @@ Cette div permet de cacher l'introduction au fur et à mesure de l'arrivée du P
 Il faudra ainsi mettre cette div sur l'introduction visible à l'utilisateur, cela donnera un effet de disparition de l'article jusqu'à l'apparition du Paywall
 
 ```html
-<div id="ViewPay_ReadPC"></div>
+<div class="ViewPay_ReadPC"></div>
 ```
 Cet ID permet d'afficher le pourcentage de lecture restant par rapport à la totalité de l'article.
 "Il vous reste 95% de l'article à lire"
