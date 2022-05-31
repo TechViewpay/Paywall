@@ -156,7 +156,7 @@ Nous pouvons donc hériter de CSS de div parents.
 Le Paywall possède des outils dans le BO à configurer dans votre compte, nous l'étoffons de jour en jour afin de satisfaire un maximum de besoin.
 
 ```html
-<div id="ViewPay_Article">Lorem ipsum </div>
+<div class="ViewPay_Article">Lorem ipsum </div>
 ```
 Cet ID contiendra l'article et permettra de cacher l'article à l'aide de JS.
 Si le JS est désactivé chez l'utilisateur, nous utilisons alors du CSS.
